@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { useLogin } from "@pankod/refine-core";
 import { Container, Box } from "@pankod/refine-mui";
 
+import { logo } from "Assets/Index";
+
 import { CredentialResponse } from "../Interfaces/google";
 
 export const Login: React.FC = () => {
@@ -18,7 +20,7 @@ export const Login: React.FC = () => {
       try {
         window.google.accounts.id.initialize({
           ux_mode: "popup",
-          client_id: "your-client-id",
+          client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
           callback: async (res: CredentialResponse) => {
             if (res.credential) {
               login(res);
@@ -39,39 +41,36 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <Box
-      component="div"
-      sx={{
-        background: `radial-gradient(50% 50% at 50% 50%, #63386A 0%, #310438 100%)`,
-        backgroundSize: "cover",
-      }}
-    >
-      <Container
-        component="main"
-        maxWidth="xs"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          height: "100vh",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
+    <Box component="div" sx={{ backgroundColor: "#FCFCFC" }}>
+        <Container
+            component="main"
+            maxWidth="xs"
+            sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                height: "100vh",
+            }}
         >
-          <div>
-            <img src="./refine.svg" alt="Refine Logo" />
-          </div>
-          <Box mt={4}>
-            <GoogleButton />
-          </Box>
-        </Box>
-      </Container>
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    flexDirection: "column",
+                    alignItems: "center",
+                }}
+            >
+                <div>
+                    <img src={logo} alt="Logo" style={{
+                      width: "100px",
+                      height: "auto"
+                    }} />
+                </div>
+                <Box mt={4}>
+                    <GoogleButton />
+                </Box>
+            </Box>
+        </Container>
     </Box>
   );
 };
