@@ -14,7 +14,7 @@ import dataProvider from "@pankod/refine-simple-rest";
 import { MuiInferencer } from "@pankod/refine-inferencer/mui";
 import routerProvider from "@pankod/refine-react-router-v6";
 import axios, { AxiosRequestConfig } from "axios";
-import { ColorModeContextProvider } from "Contexts";
+import { ColorModeContextProvider } from "Contexts/Index";
 import { Title, Sider, Layout, Header } from "Components/Layout/Index";
 import { Login } from "Views/login";
 import { CredentialResponse } from "Interfaces/google";
