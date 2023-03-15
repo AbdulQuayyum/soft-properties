@@ -34,7 +34,7 @@ import {
   useRefineContext,
 } from "@pankod/refine-core";
 
-import { Title as DefaultTitle } from "../title";
+import { Title as DefaultTitle } from "../Title";
 
 export const Sider: typeof DefaultSider = ({ render }) => {
   const [collapsed, setCollapsed] = useState(false);

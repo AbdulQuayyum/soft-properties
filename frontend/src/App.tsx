@@ -14,11 +14,11 @@ import dataProvider from "@pankod/refine-simple-rest";
 import { MuiInferencer } from "@pankod/refine-inferencer/mui";
 import routerProvider from "@pankod/refine-react-router-v6";
 import axios, { AxiosRequestConfig } from "axios";
-import { ColorModeContextProvider } from "contexts";
-import { Title, Sider, Layout, Header } from "components/layout";
-import { Login } from "pages/login";
-import { CredentialResponse } from "interfaces/google";
-import { parseJwt } from "utils/parse-jwt";
+import { ColorModeContextProvider } from "Contexts";
+import { Title, Sider, Layout, Header } from "Components/Layout";
+import { Login } from "Views/login";
+import { CredentialResponse } from "Interfaces/google";
+import { parseJwt } from "Utilities/parse-jwt";
 
 const axiosInstance = axios.create();
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {

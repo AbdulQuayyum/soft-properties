@@ -1,4 +1,4 @@
-import { UserPayload } from "interfaces/google";
+import { UserPayload } from "Interfaces/google";
 
 export function parseJwt(token: string): UserPayload {
   const base64Url = token.split(".")[1];
