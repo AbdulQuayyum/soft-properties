@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react'
 
-import { Refine, AuthProvider } from "@pankod/refine-core";
+import { Refine, AuthProvider } from '@pankod/refine-core'
 import {
-    notificationProvider,
-    RefineSnackbarProvider,
-    CssBaseline,
-    GlobalStyles,
-    ReadyPage,
-    ErrorComponent,
-} from "@pankod/refine-mui";
+  notificationProvider,
+  RefineSnackbarProvider,
+  CssBaseline,
+  GlobalStyles,
+  ReadyPage,
+  ErrorComponent,
+} from '@pankod/refine-mui'
 import {
-    AccountCircleOutlined,
-    ChatBubbleOutline,
-    PeopleAltOutlined,
-    StarOutlineRounded,
-    VillaOutlined,
-} from "@mui/icons-material";
+  AccountCircleOutlined,
+  ChatBubbleOutline,
+  PeopleAltOutlined,
+  StarOutlineRounded,
+  VillaOutlined,
+} from '@mui/icons-material'
 
 import dataProvider from '@pankod/refine-simple-rest'
 import routerProvider from '@pankod/refine-react-router-v6'
@@ -116,7 +116,7 @@ function App() {
             catchAll={<ErrorComponent />}
             resources={[
               {
-                name: 'properties',
+                name: 'Properties',
                 list: AllProperties,
                 show: PropertyDetails,
                 create: CreateProperty,
@@ -124,23 +124,23 @@ function App() {
                 icon: <VillaOutlined />,
               },
               {
-                name: 'agents',
+                name: 'Agents',
                 list: Agents,
                 show: AgentProfile,
                 icon: <PeopleAltOutlined />,
               },
               {
-                name: 'reviews',
+                name: 'Reviews',
                 list: Home,
                 icon: <StarOutlineRounded />,
               },
               {
-                name: 'messages',
+                name: 'Messages',
                 list: Home,
                 icon: <ChatBubbleOutline />,
               },
               {
-                name: 'my-profile',
+                name: 'MyProfile',
                 options: { label: 'My Profile ' },
                 list: MyProfile,
                 icon: <AccountCircleOutlined />,

@@ -239,7 +239,7 @@ export const Sider: typeof DefaultSider = ({ render }) => {
               },
               backgroundColor: 'transparent',
             },
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
           }}
         >
           <ListItemIcon
