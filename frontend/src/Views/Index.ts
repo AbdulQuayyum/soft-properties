@@ -1,5 +1,5 @@
-import Agent from "./Agent";
 import AgentProfile from "./AgentProfile";
+import Agents from "./Agents";
 import AllProperties from "./AllProperties";
 import CreateProperty from "./CreateProperty";
 import EditProperty from "./EditProperty";
@@ -9,8 +9,8 @@ import MyProfile from "./MyProfile";
 import PropertyDetails from "./PropertyDetails";
 
 export {
-    Agent,
     AgentProfile,
+    Agents,
     AllProperties,
     CreateProperty,
     EditProperty,
