@@ -111,7 +111,7 @@ function App() {
         <RefineSnackbarProvider>
           <Refine
             dataProvider={dataProvider('')}
-            // notificationProvider={notificationProvider}
+            notificationProvider={notificationProvider}
             ReadyPage={ReadyPage}
             catchAll={<ErrorComponent />}
             resources={[
