@@ -2,6 +2,8 @@ import express from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
 
+import ConnectDB from "./Source/MongoDB/Connect"
+
 let PORT
 process.env.STATUS === "development"
     ? (PORT = process.env.DEV_ENDPOINT_URL)
@@ -19,6 +21,8 @@ app.get("/", (req, res) => {
 
 const StartServer = async () => {
     try {
+        ConnectDB(process.env.MONGODB_URL);
+
         app.listen(PORT, () => {
             console.log(`Server is in ${process.env.STATUS} mode, listening on port ${PORT}`)
         })
