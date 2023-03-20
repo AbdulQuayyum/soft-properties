@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Refine, AuthProvider } from '@pankod/refine-core'
 import {
   notificationProvider,
@@ -25,17 +23,7 @@ import { Title, Sider, Layout, Header } from 'Components/Layout/Index'
 import { CredentialResponse } from 'Interfaces/google'
 import { parseJwt } from 'Utilities/parse-jwt'
 
-import {
-  Agents,
-  AgentProfile,
-  AllProperties,
-  CreateProperty,
-  EditProperty,
-  Home,
-  Login,
-  MyProfile,
-  PropertyDetails,
-} from 'Views/Index'
+import { Agents, AgentProfile, AllProperties, CreateProperty, EditProperty, Home, Login, MyProfile, PropertyDetails } from 'Views/Index'
 
 const axiosInstance = axios.create()
 axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
@@ -52,56 +40,96 @@ axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
 })
 
 function App() {
+
+  const devUrl = process.env.REACT_APP_DEV_ENDPOINT_URL
+  const prodUrl = process.env.REACT_APP_PROD_ENDPOINT_URL
+  const projectStatus : string | undefined = process.env.REACT_APP_STATUS
+
+  console.log(devUrl)
+  console.log(prodUrl)
+  console.log(projectStatus)
+
+
+  // let PORT
+  // if (process.env.REACT_APP_STATUS === "development") {
+  //   PORT = process.env.REACT_APP_DEV_ENDPOINT_URL
+  // } else {
+  //   PORT = process.env.REACT_APP_PROD_ENDPOINT_URL
+  // }
+
+  // console.log(`${process.env.REACT_APP_STATUS} = ${PORT}`)
+
+
   const authProvider: AuthProvider = {
-    login: ({ credential }: CredentialResponse) => {
-      const profileObj = credential ? parseJwt(credential) : null
+    login: async ({ credential }: CredentialResponse) => {
+      const profileObj = credential ? parseJwt(credential) : null;
 
       if (profileObj) {
-        localStorage.setItem(
-          'user',
-          JSON.stringify({
-            ...profileObj,
-            avatar: profileObj.picture,
-          }),
-        )
+        const response = await fetch(
+          'http://localhost:8080/api/v1/Users',
+          // `${PORT}/api/v1/Users`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: profileObj.name,
+              email: profileObj.email,
+              avatar: profileObj.picture,
+            }),
+          },
+        );
+
+        const data = await response.json();
+
+        if (response.status === 200) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify({
+              ...profileObj,
+              avatar: profileObj.picture,
+              userid: data._id,
+            }),
+          );
+        } else {
+          return Promise.reject();
+        }
       }
+      localStorage.setItem("token", `${credential}`);
 
-      localStorage.setItem('token', `${credential}`)
-
-      return Promise.resolve()
+      return Promise.resolve();
     },
     logout: () => {
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem("token");
 
-      if (token && typeof window !== 'undefined') {
-        localStorage.removeItem('token')
-        localStorage.removeItem('user')
-        axios.defaults.headers.common = {}
+      if (token && typeof window !== "undefined") {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        axios.defaults.headers.common = {};
         window.google?.accounts.id.revoke(token, () => {
-          return Promise.resolve()
-        })
+          return Promise.resolve();
+        });
       }
 
-      return Promise.resolve()
+      return Promise.resolve();
     },
     checkError: () => Promise.resolve(),
     checkAuth: async () => {
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem("token");
 
       if (token) {
-        return Promise.resolve()
+        return Promise.resolve();
       }
-      return Promise.reject()
+      return Promise.reject();
     },
 
     getPermissions: () => Promise.resolve(),
     getUserIdentity: async () => {
-      const user = localStorage.getItem('user')
+      const user = localStorage.getItem("user");
       if (user) {
-        return Promise.resolve(JSON.parse(user))
+        return Promise.resolve(JSON.parse(user));
       }
     },
-  }
+  };
 
   return (
     <>
@@ -110,7 +138,8 @@ function App() {
         <GlobalStyles styles={{ html: { WebkitFontSmoothing: 'auto' } }} />
         <RefineSnackbarProvider>
           <Refine
-            dataProvider={dataProvider('')}
+            dataProvider={dataProvider('http://localhost:8080/api/v1')}
+            // dataProvider={dataProvider(`${PORT}/api/v1`)}
             notificationProvider={notificationProvider}
             ReadyPage={ReadyPage}
             catchAll={<ErrorComponent />}
