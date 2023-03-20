@@ -3,6 +3,8 @@ import * as dotenv from "dotenv";
 import cors from "cors";
 
 import ConnectDB from "./Source/MongoDB/Connect.js"
+import PropertyRouter from "./Source/Routes/Property.Routes.js"
+import UserRouter from "./Source/Routes/User.Routes.js"
 
 dotenv.config();
 
@@ -16,6 +18,9 @@ app.get('/', async (req, res) => {
     });
 });
 
+app.use("/api/v1/Properties", PropertyRouter )
+app.use("/api/v1/Users", UserRouter)
+
 let PORT;
 
 if (process.env.STATUS === 'development') {
@@ -23,7 +28,6 @@ if (process.env.STATUS === 'development') {
 } else {
     PORT = process.env.PROD_ENDPOINT_URL;
 }
-
 
 const StartServer = async () => {
     try {

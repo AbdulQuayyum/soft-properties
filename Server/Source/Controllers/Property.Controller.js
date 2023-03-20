@@ -1,5 +1,5 @@
-import Property from "../MongoDB/Models/Property";
-import User from "../MongoDB/Models/User";
+import Property from "../MongoDB/Models/Property.js";
+import User from "../MongoDB/Models/User.js";
 
 const CreateProperty = async (req, res) => { }
 const DeleteProperty = async (req, res) => { }
