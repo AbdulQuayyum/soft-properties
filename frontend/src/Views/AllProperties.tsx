@@ -142,7 +142,7 @@ const AllProperties = () => {
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <CustomButton
           title="Add Property"
-          handleClick={() => navigate('/Properties/Create')}
+          handleClick={() => navigate('/Properties/create')}
           backgroundColor="#475be8"
           color="#fcfcfc"
           icon={<Add />}

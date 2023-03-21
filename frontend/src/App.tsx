@@ -57,7 +57,7 @@ function App() {
     PORT = process.env.REACT_APP_PROD_ENDPOINT_URL
   }
 
-  console.log(`${process.env.REACT_APP_STATUS} = ${PORT}`)
+  // console.log(`${process.env.REACT_APP_STATUS} = ${PORT}`)
 
 
   const authProvider: AuthProvider = {

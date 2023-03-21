@@ -32,7 +32,7 @@ const AgentCard = ({
   const generateLink = () => {
     if (currentUser.email === email) return '/MyProfile'
 
-    return `/Agents/Show/${id}`
+    return `/Agents/show/${id}`
   }
 
   return (
