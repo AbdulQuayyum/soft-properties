@@ -41,23 +41,23 @@ axiosInstance.interceptors.request.use((request: AxiosRequestConfig) => {
 
 function App() {
 
-  const devUrl = process.env.REACT_APP_DEV_ENDPOINT_URL
-  const prodUrl = process.env.REACT_APP_PROD_ENDPOINT_URL
-  const projectStatus : string | undefined = process.env.REACT_APP_STATUS
+  // const devUrl = process.env.REACT_APP_DEV_ENDPOINT_URL
+  // const prodUrl = process.env.REACT_APP_PROD_ENDPOINT_URL
+  // const projectStatus : string | undefined = process.env.REACT_APP_STATUS
 
-  console.log(devUrl)
-  console.log(prodUrl)
-  console.log(projectStatus)
+  // console.log(devUrl)
+  // console.log(prodUrl)
+  // console.log(projectStatus)
 
 
-  // let PORT
-  // if (process.env.REACT_APP_STATUS === "development") {
-  //   PORT = process.env.REACT_APP_DEV_ENDPOINT_URL
-  // } else {
-  //   PORT = process.env.REACT_APP_PROD_ENDPOINT_URL
-  // }
+  let PORT: string | undefined
+  if (process.env.REACT_APP_STATUS === "development") {
+    PORT = process.env.REACT_APP_DEV_ENDPOINT_URL
+  } else {
+    PORT = process.env.REACT_APP_PROD_ENDPOINT_URL
+  }
 
-  // console.log(`${process.env.REACT_APP_STATUS} = ${PORT}`)
+  console.log(`${process.env.REACT_APP_STATUS} = ${PORT}`)
 
 
   const authProvider: AuthProvider = {
@@ -66,8 +66,8 @@ function App() {
 
       if (profileObj) {
         const response = await fetch(
-          'http://localhost:8080/api/v1/Users',
-          // `${PORT}/api/v1/Users`,
+          // 'http://localhost:8080/api/v1/Users',
+          `${PORT}/api/v1/Users`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -138,8 +138,8 @@ function App() {
         <GlobalStyles styles={{ html: { WebkitFontSmoothing: 'auto' } }} />
         <RefineSnackbarProvider>
           <Refine
-            dataProvider={dataProvider('http://localhost:8080/api/v1')}
-            // dataProvider={dataProvider(`${PORT}/api/v1`)}
+            // dataProvider={dataProvider('http://localhost:8080/api/v1')}
+            dataProvider={dataProvider(`${PORT}/api/v1`)}
             notificationProvider={notificationProvider}
             ReadyPage={ReadyPage}
             catchAll={<ErrorComponent />}
