@@ -28,12 +28,12 @@ const Agents = () => {
       >
         {allAgents.map((agent) => (
           <AgentCard
-            // key={agent._id}
-            // id={agent._id}
-            // name={agent.name}
-            // email={agent.email}
-            // avatar={agent.avatar}
-            // noOfProperties={agent.allProperties.length}
+            key={agent._id}
+            id={agent._id}
+            name={agent.name}
+            email={agent.email}
+            avatar={agent.avatar}
+            noOfProperties={agent.allProperties.length}
           />
         ))}
       </Box>
