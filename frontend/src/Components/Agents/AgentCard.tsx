@@ -86,10 +86,10 @@ const AgentCard = ({
             icon={<EmailOutlined sx={{ color: '#808191' }} />}
             name={email}
           />
-          <InfoBar icon={<Place sx={{ color: '#808191' }} />} name="London" />
+          <InfoBar icon={<Place sx={{ color: '#808191' }} />} name="Earth" />
           <InfoBar
             icon={<Phone sx={{ color: '#808191' }} />}
-            name="+502-3231-4141"
+            name="+xxx xxxx xxx"
           />
           <InfoBar
             icon={<LocationCity sx={{ color: '#808191' }} />}

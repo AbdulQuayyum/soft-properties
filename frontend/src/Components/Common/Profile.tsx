@@ -3,6 +3,7 @@ import { Box, Stack, Typography } from '@pankod/refine-mui'
 
 import { ProfileProps, PropertyProps } from 'Interfaces/common'
 import PropertyCard from './PropertyCard'
+import { map } from 'Assets/Index'
 
 function checkImage(url: any) {
   const img = new Image()
@@ -25,7 +26,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
         }}
       >
         <img
-          src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
+          src={map}
           width={340}
           height={320}
           alt="abstract"
@@ -68,7 +69,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                   {name}
                 </Typography>
                 <Typography fontSize={16} color="#808191">
-                  Realestate Agent
+                  Real Estate Agent
                 </Typography>
               </Stack>
 
@@ -85,7 +86,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                   >
                     <Place sx={{ color: '#11142D' }} />
                     <Typography fontSize={14} color="#11142D">
-                      4517 Washington Ave. Manchaster, Kentucky 39495
+                      0000 Some Road, Somewhere, Earth.
                     </Typography>
                   </Box>
                 </Stack>
@@ -103,7 +104,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                     >
                       <Phone sx={{ color: '#11142D' }} />
                       <Typography fontSize={14} color="#11142D" noWrap>
-                        +0123 456 7890
+                        +xxx xxxx xxx
                       </Typography>
                     </Box>
                   </Stack>
