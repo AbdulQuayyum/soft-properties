@@ -10,7 +10,7 @@ import {
 
 const Home = () => {
   const { data, isLoading, isError } = useList({
-    resource: 'properties',
+    resource: 'Properties',
     config: {
       pagination: {
         pageSize: 4,
