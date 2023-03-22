@@ -50,7 +50,7 @@ const PropertyDetails = () => {
         },
         {
           onSuccess: () => {
-            navigate('/properties')
+            navigate('/Properties')
           },
         },
       )
@@ -215,7 +215,7 @@ const PropertyDetails = () => {
               <Stack mt="15px" direction="row" alignItems="center" gap={1}>
                 <Place sx={{ color: '#808191' }} />
                 <Typography fontSize={14} fontWeight={400} color="#808191">
-                  North Carolina, USA
+                  Somewhere, Earth
                 </Typography>
               </Stack>
 
@@ -239,7 +239,7 @@ const PropertyDetails = () => {
                 icon={!isCurrentUser ? <ChatBubble /> : <Edit />}
                 handleClick={() => {
                   if (isCurrentUser) {
-                    navigate(`/properties/edit/${propertyDetails._id}`)
+                    navigate(`/Properties/edit/${propertyDetails._id}`)
                   }
                 }}
               />
@@ -260,7 +260,7 @@ const PropertyDetails = () => {
             <img
               src="https://serpmedia.org/scigen/images/googlemaps-nyc-standard.png?crc=3787557525"
               width="100%"
-              alt='...'
+              alt="..."
               height={306}
               style={{ borderRadius: 10, objectFit: 'cover' }}
             />
