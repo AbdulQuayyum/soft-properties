@@ -32,7 +32,7 @@ app.use("/api/v1/Users", UserRouter)
 const StartServer = async () => {
   try {
     ConnectDB(process.env.MONGODB_URL);
-    app.listen(PORT, () => {
+    app.listen(8080, () => {
       console.log("Cooking")
       // console.log(`Server is in ${process.env.STATUS} mode, listening on port ${PORT}`);
     });
